@@ -9,6 +9,19 @@
   <li><%= review.content %> Rating: <%= review.rating %></li>
   <% end %>
 </ul>
+<h3>Add a new review for <%= @restaurant.name %></h3>
+<%= form_for [@restaurant, @review] do |f| %>
+  <div class="form-group">
+    <%= f.label :content %>
+    <%= f.text_field :content, class: 'form-control' %>
+  </div>
 
+  <div class="form-group">
+    <%= f.label :rating %>
+    <%= f.number_field :rating, class: 'form-control' %>
+  </div>
+
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>
 <%= link_to "Back to all restaurants", restaurants_path %>
-<%= link_to "Add a review", new_restaurant_review_path(@restaurant) %>
+
